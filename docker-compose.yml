@@ -1,11 +1,12 @@
 version: '2'
 services:
   mariadb:
-    image: docker.io/bitnami/mariadb:latest
+    image: mariadb:latest
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
       - MARIADB_USER=bn_moodle
       - MARIADB_PASSWORD=bn_moodle
+      - MARIADB_ROOT_PASSWORD=bn_moodle
       - MARIADB_DATABASE=bitnami_moodle
       - MARIADB_CHARACTER_SET=utf8mb4
       - MARIADB_COLLATE=utf8mb4_unicode_ci
@@ -29,11 +30,6 @@ services:
       - MOODLE_DATABASE_PASSWORD=bn_moodle
       - MOODLE_DATABASE_NAME=bitnami_moodle
       - MOODLE_SITE_NAME=HigIA Cursos
-      - MOODLE_SMTP_HOST=smtp.titan.email
-      - MOODLE_SMTP_PORT=465
-      - MOODLE_SMTP_USER=treinamento@higiatec.com.br
-      - MOODLE_SMTP_PASSWORD=Treinamento@22
-      - MOODLE_SMTP_PROTOCOL=tls
       
     volumes:
       - ./moodle_data:/bitnami/moodle
